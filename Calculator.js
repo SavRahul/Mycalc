@@ -1,110 +1,133 @@
 let Input = document.getElementById("Screen")
 
-Input.addEventListener("change", function (){
+Input.addEventListener("change", function () {
     console.log(Input.value)
 })
 
 var sqrtFlag = false;
 var perflag = false;
 
-function bracketopen(){
-    Input.value+='('
+function bracketopen() {
+    if (!on)
+        Input.value += '('
 }
-function bracketclose(){
-    Input.value+=')'
+function bracketclose() {
+    if (!on)
+        Input.value += ')'
 }
-function clr(){
-    Input.value=""
+function clr() {
+    if (!on)
+        Input.value = ""
 }
-function del(){
-    Input.value = Input.value.substr(0,Input.value.length-1);
+function del() {
+    if (!on)
+        Input.value = Input.value.substr(0, Input.value.length - 1);
 }
-function set7(){
-    Input.value+= "7"
+function set7() {
+    if (!on)
+        Input.value += "7"
 }
-function set8(){
-    Input.value+= "8"
+function set8() {
+    if (!on)
+        Input.value += "8"
 }
-function set9(){
-    Input.value+="9"
+function set9() {
+    if (!on)
+        Input.value += "9"
 }
-function Divide(){
-    Input.value+="/"
+function Divide() {
+    if (!on)
+        Input.value += "/"
 }
-function sqrt(){
-    Input.value+="√"
-    sqrtFlag=true;
-    // var result= Math.sqrt(Input.value)
-    // Input.value= result
-}
-function set4(){
-    Input.value+= "4"
-}
-function set5(){
-    Input.value+= "5"
-}
-function set6(){
-    Input.value+= "6"
-}
-function multiply(){
-    Input.value+= "*"
-}
-function percentage(){
-    Input.value+= "%"
-    perflag=true;
-}
-function set1(){
-    Input.value+= "1"
-}
-function set2(){
-    Input.value+= "2"
-}
-function set3(){
-    Input.value+= "3"
-}
-function add(){
-    Input.value+= "+"
-}
-function subtract(){
-    Input.value+= "-"
-}
-function zero(){
-    Input.value+= "0"
-}
-function doublezero(){
-    Input.value+= "00"
-}
-function point(){
-    Input.value+= "."
-}
-function equal(){
-    if(sqrtFlag){
-        // console.log(Input.value.substring(1,Input.value.length))
-        Input.value = Math.sqrt(Input.value.substring(1,Input.value.length))
+function sqrt() {
+    if (!on){
+        Input.value += "√"
+        sqrtFlag = true;
     }
-    else if(perflag){
-        let per=Input.value.split("%");
-        // console.log(per)
-        Input.value = parseFloat((per[0]*per[1])/100);
+}
+function set4() {
+    if (!on)
+        Input.value += "4"
+}
+function set5() {
+    if (!on)
+        Input.value += "5"
+}
+function set6() {
+    if (!on)
+        Input.value += "6"
+}
+function multiply() {
+    if (!on)
+        Input.value += "*"
+}
+function percentage() {
+    if (!on){
+        Input.value += "%"
+        perflag = true;
     }
-    else{
-        Input.value=eval(Input.value)
+}
+function set1() {
+    if (!on)
+        Input.value += "1"
+}
+function set2() {
+    if (!on)
+        Input.value += "2"
+}
+function set3() {
+    if (!on)
+        Input.value += "3"
+}
+function add() {
+    if (!on)
+        Input.value += "+"
+}
+function subtract() {
+    if (!on)
+        Input.value += "-"
+}
+function zero() {
+    if (!on)
+        Input.value += "0"
+}
+function doublezero() {
+    if (!on)
+        Input.value += "00"
+}
+function point() {
+    if (!on)
+        Input.value += "."
+}
+function equal() {
+    if (!on) {
+        if (sqrtFlag) {
+            // console.log(Input.value.substring(1,Input.value.length))
+            Input.value = Math.sqrt(Input.value.substring(1, Input.value.length))
+        }
+        else if (perflag) {
+            let per = Input.value.split("%");
+            // console.log(per)
+            Input.value = parseFloat((per[0] * per[1]) / 100);
+        }
+        else {
+            Input.value = eval(Input.value)
+        }
     }
-    
 }
 let on = 'false'
 function onoff() {
 
-    if (on){
+    if (on) {
         Input.value = "CASIO.."
         setTimeout(() => {
-            Input.value= ""
+            Input.value = ""
         }, 1000);
     }
-    else{
+    else {
         Input.value = "Good bye"
         setTimeout(() => {
-            Input.value= ""
+            Input.value = ""
         }, 1000);
     }
     on = !on
