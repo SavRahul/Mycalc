@@ -100,7 +100,6 @@ function point() {
         Input.value += "."
 }
 function equal() {
-    if (!on) {
         if (sqrtFlag) {
             // console.log(Input.value.substring(1,Input.value.length))
             Input.value = Math.sqrt(Input.value.substring(1, Input.value.length))
@@ -113,7 +112,6 @@ function equal() {
         else {
             Input.value = eval(Input.value)
         }
-    }
 }
 let on = 'false'
 function onoff() {
